@@ -31,3 +31,4 @@ relative/path/to/dir/filename.extension
 relative/path/to/dir/anotherfile
 
 .gitignore
+.DS_Store
