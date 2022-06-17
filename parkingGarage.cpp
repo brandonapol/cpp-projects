@@ -6,16 +6,27 @@ class ParkingGarage {
     private:
         int spaces = 10;
         int choice = 0;
-    public:
         int getSpaces() {
             return spaces;
         }; 
-        void removeSpace() {
-            spaces = spaces - 1;
-        }
         void addSpace() {
-            spaces = spaces += 1;
+            if (getSpaces() <= 0) {
+                std::cout << "There is no room in the garage.\n";
+            }
+            else {
+                std::cout << "You have taken a ticket.\n";
+                spaces = spaces - 1;
+            };
         }
+        void removeSpace() {
+            if (getSpaces() >= 10){
+                std::cout << "There are no cars in the garage.\n";
+            }
+            else {
+                std::cout << "Have a great day!\n";
+                spaces = spaces += 1;
+            }    
+        }   
         int getChoice() {
             return choice;
         }
@@ -25,6 +36,7 @@ class ParkingGarage {
         void showSpaces(){
             std::cout << "There are " << getSpaces() << " remaining.\n";
         }
+    public:
         void decisionTree(){
             while (true){
                 int new_user_choice;
@@ -32,11 +44,11 @@ class ParkingGarage {
                 std::cin >> new_user_choice;
                 setChoice(new_user_choice);
                 if (choice == 1) {
-                    takeTicket();
+                    addSpace();
                     showSpaces();
                 }
                 else if (choice == 2) {
-                    checkout();
+                    removeSpace();
                 }
                 else if (choice == 3) {
                     showSpaces();
@@ -44,26 +56,8 @@ class ParkingGarage {
                 else {
                     break;
                 };
-            }
-        };
-        void takeTicket() {
-            if (getSpaces() <= 0) {
-                std::cout << "There is no room in the garage.\n";
-            }
-            else {
-                std::cout << "You have taken a ticket.\n";
-                removeSpace();
             };
         };
-        void checkout(){
-            if (getSpaces() >= 10){
-                std::cout << "There are no cars in the garage.\n";
-            }
-            else {
-                std::cout << "Have a great day!\n";
-                addSpace();
-            }
-        }
 };
 
 int main(){
